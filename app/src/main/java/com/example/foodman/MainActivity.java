@@ -92,6 +92,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        FloatingActionButton shareReps = findViewById(R.id.shareReps);
+        shareReps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Create an ACTION_SEND Intent*/
+                Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+                /*This will be the actual content you wish you share.*/
+                String shareBody = "";
+                for(int i=0;i<reports.size();i++){
+                    shareBody = shareBody + reports.get(i).getName() + "\n";
+                }
+                /*The type of the content is text, obviously.*/
+                intent.setType("text/plain");
+                /*Applying information Subject and Body.*/
+                intent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                /*Fire!*/
+                startActivity(Intent.createChooser(intent,"Share via:"));
+            }
+        });
+
     }
 
 

@@ -55,5 +55,16 @@ public class ReportActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(intent,"Share via:"));
             }
         });
+
+        final FloatingActionButton delete = findViewById(R.id.delete);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.deleteReport(report);
+                Intent intent = new Intent(context, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
     }
 }
