@@ -66,6 +66,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 cursor.getString(1));
         // return report
         return report;
+        //rep
     }
 
     // code to get all reports in a list view
